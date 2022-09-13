@@ -1,0 +1,28 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func Split(s, sep string) []string {
+	var resultat []string
+	var temp string
+	for i, j := range s {
+		temp += string(j)
+		if s[i] == 'H' && s[i+1] == 'A' {
+			temp = strings.TrimSuffix(temp, "H")
+			temp = strings.TrimPrefix(temp, "A")
+			resultat = append(resultat, temp)
+			temp = ""
+		}
+	}
+	temp = strings.TrimPrefix(temp, "A")
+	resultat = append(resultat, temp)
+	return resultat
+}
+
+func main() {
+	s := "HelloHAhowHAareHAyou?"
+	fmt.Printf("%#v\n", Split(s, "HA"))
+}

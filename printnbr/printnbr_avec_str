@@ -1,0 +1,29 @@
+package main
+
+import (
+	"strconv"
+
+	"github.com/01-edu/z01"
+)
+
+func printnbr(n int) {
+	var i int
+	var n2 int = n
+	if n < 0 {
+		n *= -1
+		n2 *= -1
+		z01.PrintRune('-')
+	}
+	if n2 == 0 {
+		i = 1
+	} else {
+		for i = 0; n2 > 0; i++ {
+			n2 /= 10
+		}
+	}
+	for j := 0; j != i; j++ {
+		c := strconv.Itoa(n)
+		c2 := c[j]
+		z01.PrintRune(rune(c2))
+	}
+}
